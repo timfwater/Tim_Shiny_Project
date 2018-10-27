@@ -74,6 +74,9 @@ filt_data2 <- reactive({
   mapdf$State_Cor = as.numeric(
     as.character(mapdf$State_Cor)
   )
+  mapdf$State_Coef = as.numeric(
+    as.character(mapdf$State_Coef)
+  )
   return(mapdf)
 })
 
@@ -91,6 +94,21 @@ filt_data2 <- reactive({
                   resolution="provinces",
                   width=300, height=200))     
    })
+
+#map 2 of Beta coefficient
+   
+   output$map2 <- renderGvis({
+     gvisGeoChart(filt_data2(), locationvar="state_names", 
+                  colorvar="State_Coef",
+                  options=list(title="The Strength of the Relationship Between Selected Varriables (Pearsons Correlation)",
+                               region="US",
+                               sizeAxis.maxValue = 1.0,
+                               sizeAxis.minValue = -1.0,
+                               displayMode="regions", 
+                               resolution="provinces",
+                               width=300, height=200))     
+   })   
+   
 }
   # 
   # output$map2 <- renderGvis({

@@ -52,8 +52,8 @@ sidebarLayout(
   ),
   mainPanel(
                              fluidRow(  
-                               column(6, htmlOutput("map1"))
-    #                           column(6, htmlOutput("map2"))
+                               column(6, htmlOutput("map1")),
+                               column(6, htmlOutput("map2"))
                              )    
     
     
