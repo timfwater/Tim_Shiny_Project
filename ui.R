@@ -99,7 +99,40 @@ tabPanel("Variable Relatonships across States: Health",
              #    plotOutput("plot")
            )
          )
+),
+
+
+
+#Tab 4
+
+
+tabPanel("Variable Relatonships across States: Economy",
+         sidebarLayout(
+           sidebarPanel(
+             #fluidRow(something else)
+             fluidRow(
+               column(6, selectizeInput(inputId = "measure7",
+                                        label = "Choose a measure",
+                                        choices = choices_measures,
+                                        selected = choices_measures[1])),
+               column(6, selectizeInput(inputId = "measure8",
+                                        label="Choose a second measure",
+                                        choices = choices_measures,
+                                        selected = choices_measures[1]))
+             )
+           ),
+           mainPanel(
+             fluidRow(  
+               column(6, htmlOutput("map7")),
+               column(6, htmlOutput("map8"))
+             )    
+             
+             
+             #    plotOutput("plot")
+           )
+         )
 )
+
 
 #navpage parenthese below
 )
