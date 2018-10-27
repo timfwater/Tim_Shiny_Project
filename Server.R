@@ -255,7 +255,78 @@ filt_data2 <- reactive({
    })   
    
    
+
+   #Tab 5
+   
+   filt_data5 <- reactive({
+     
+     State_Cor_S = numeric()
+     State_Coef_S = numeric()
+     state_names = unique(AHRT$StateName)
+     state_names = state_names[state_names!='ALL' & !is.na(state_names) & 
+                                 state_names!='United States' & state_names!= 'District of Columbia']
+     state_names = unique(state_names)[order(unique(state_names))]
+     
+     for (state in state_names) {
+       #derive measure 1 by state
+       M9 = AHRT %>%
+         filter(., StateName == state) %>%
+         filter(., MeasureName == input$measure9) %>%
+         filter(., !is.na(Value))
+       #derive measure 2 by state
+       M10 = AHRT %>%
+         filter(., StateName == state) %>%
+         filter(., MeasureName == input$measure10) %>%
+         filter(., !is.na(Value))
+       #Alabama unins/lowhs joined dataset
+       M9M10 = inner_join(M9, M10, by = c("Edition","Edition"))
+       M9M10_cor = cor(M9M10$Value.x, M9M10$Value.y,  method = "pearson", use = "complete.obs")
+       M9M10_lm = lm(M9M10$Value.x ~ M9M10$Value.y)
+       M9M10_coef = M9M10_lm$coefficients[["M9M10$Value.y"]]
        
+       State_Cor_S = c(State_Cor_S, M9M10_cor)
+       State_Coef_S = c(State_Coef_S, M9M10_coef)
+       
+     }
+     mapdf_S = data.frame(cbind(state_names, State_Cor_S, State_Coef_S))
+     print(dim(mapdf_S))
+     mapdf_S$State_Cor_S = as.numeric(
+       as.character(mapdf_S$State_Cor_S)
+     )
+     mapdf_S$State_Coef_S = as.numeric(
+       as.character(mapdf_S$State_Coef_S)
+     )
+     return(mapdf_S)
+   })
+   
+   
+   #map 1 of pearsons
+   
+   output$map9 <- renderGvis({
+     gvisGeoChart(filt_data5(), locationvar="state_names", 
+                  colorvar="State_Cor_S",
+                  options=list(title="The Strength of Statistical Relationships Between Selected Health Varriables (Pearsons Correlation)",
+                               region="US",
+                               sizeAxis.maxValue = 1.0,
+                               sizeAxis.minValue = -1.0,
+                               displayMode="regions", 
+                               resolution="provinces",
+                               width=300, height=200))     
+   })
+   
+   #map 2 of Beta coefficient
+   
+   output$map10 <- renderGvis({
+     gvisGeoChart(filt_data5(), locationvar="state_names", 
+                  colorvar="State_Coef_S",
+                  options=list(title="The Strength of the Relationship Between Selected Varriables (Pearsons Correlation)",
+                               region="US",
+                               sizeAxis.maxValue = 1.0,
+                               sizeAxis.minValue = -1.0,
+                               displayMode="regions", 
+                               resolution="provinces",
+                               width=300, height=200))     
+   })     
 #function(input, output, session) end bracket   
 }
   # 
