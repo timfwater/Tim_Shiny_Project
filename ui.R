@@ -60,7 +60,7 @@ sidebarLayout(
 #    plotOutput("plot")
   )
 )
-)
+),
 
 
 # sidebarLayout(
@@ -70,6 +70,38 @@ sidebarLayout(
 # )),
 #   mainPanel()
 
+
+#Tab 3
+
+
+tabPanel("Variable Relatonships across States: Health",
+         sidebarLayout(
+           sidebarPanel(
+             #fluidRow(something else)
+             fluidRow(
+               column(6, selectizeInput(inputId = "measure5",
+                                        label = "Choose a measure",
+                                        choices = choices_measures,
+                                        selected = choices_measures[1])),
+               column(6, selectizeInput(inputId = "measure6",
+                                        label="Choose a second measure",
+                                        choices = choices_measures,
+                                        selected = choices_measures[1]))
+             )
+           ),
+           mainPanel(
+             fluidRow(  
+               column(6, htmlOutput("map5")),
+               column(6, htmlOutput("map6"))
+             )    
+             
+             
+             #    plotOutput("plot")
+           )
+         )
+)
+
+#navpage parenthese below
 )
 
 
