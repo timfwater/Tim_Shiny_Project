@@ -92,7 +92,7 @@ filt_data2 <- reactive({
                   sizeAxis.minValue = -1.0,
                   displayMode="regions", 
                   resolution="provinces",
-                  width=300, height=200))     
+                  width=440, height=400))     
    })
 
 #map 2 of Beta coefficient
@@ -106,7 +106,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=300, height=200))     
+                               width=440, height=400))     
    })   
 
 #Tab 3
@@ -164,7 +164,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=300, height=200))     
+                               width=440, height=400))     
    })
    
    #map 2 of Beta coefficient
@@ -178,7 +178,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=300, height=200))     
+                               width=440, height=400))     
    })   
    
     output$healthtable = DT::renderDataTable({
@@ -241,7 +241,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=300, height=200))     
+                               width=440, height=400))     
    })
    
    #map 2 of Beta coefficient
@@ -255,7 +255,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=300, height=200))     
+                               width=440, height=400))     
    })   
    
     output$economictable = DT::renderDataTable({
@@ -317,7 +317,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=300, height=200))     
+                               width=440, height=400))     
    })
    
    #map 2 of Beta coefficient
@@ -331,7 +331,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=300, height=200))     
+                               width=440, height=400))     
    })     
    
 
