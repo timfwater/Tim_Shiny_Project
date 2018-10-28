@@ -181,7 +181,11 @@ filt_data2 <- reactive({
                                width=300, height=200))     
    })   
    
-  
+    output$healthtable = DT::renderDataTable({
+      Health_Variables
+    })
+   
+    
    #Tab 4
    
    filt_data4 <- reactive({
@@ -254,7 +258,9 @@ filt_data2 <- reactive({
                                width=300, height=200))     
    })   
    
-   
+   # output$economictable = DT::renderDataTable({
+   #   Economic_Variables
+   # })   
 
    #Tab 5
    

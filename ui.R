@@ -93,12 +93,23 @@ tabPanel("Variable Relatonships across States: Health",
              fluidRow(  
                column(6, htmlOutput("map5")),
                column(6, htmlOutput("map6"))
-             )    
-             
+             ),    
+              fluidRow(
+             #   
+                h1("Variable Description"),
+                DT::dataTableOutput("healthtable")
+              )  
+               
+               #tableOutput("Health_Variables")
+               
+               #h1("list of variables"),
+               #tags$img(scr="./health_variable_table.png", style="width:180px; height:150px; border:0px;")
+               
+             )
              
              #    plotOutput("plot")
            )
-         )
+         
 ),
 
 
@@ -125,11 +136,15 @@ tabPanel("Variable Relatonships across States: Economy",
              fluidRow(  
                column(6, htmlOutput("map7")),
                column(6, htmlOutput("map8"))
-             )    
-             
-             
-             #    plotOutput("plot")
-           )
+             )
+           #   fluidRow(
+           #     
+           #     h2("Variable Description"),
+           #     DT::dataTableOutput("economictable")            
+           #   
+           #   
+           #   #    plotOutput("plot")
+            )
          )
 ),
 
