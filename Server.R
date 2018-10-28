@@ -258,9 +258,9 @@ filt_data2 <- reactive({
                                width=300, height=200))     
    })   
    
-   # output$economictable = DT::renderDataTable({
-   #   Economic_Variables
-   # })   
+    output$economictable = DT::renderDataTable({
+      Economic_Variables
+    })   
 
    #Tab 5
    
@@ -333,6 +333,11 @@ filt_data2 <- reactive({
                                resolution="provinces",
                                width=300, height=200))     
    })     
+   
+
+   output$societaltable = DT::renderDataTable({
+     Societal_Variables
+   })  
 #function(input, output, session) end bracket   
 }
   # 

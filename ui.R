@@ -136,12 +136,12 @@ tabPanel("Variable Relatonships across States: Economy",
              fluidRow(  
                column(6, htmlOutput("map7")),
                column(6, htmlOutput("map8"))
-             )
-           #   fluidRow(
+             ),
+              fluidRow(
            #     
-           #     h2("Variable Description"),
-           #     DT::dataTableOutput("economictable")            
-           #   
+                h2("Variable Description"),
+                DT::dataTableOutput("economictable")            
+              )   
            #   
            #   #    plotOutput("plot")
             )
@@ -172,7 +172,12 @@ tabPanel("Variable Relatonships across States: Societal",
              fluidRow(  
                column(6, htmlOutput("map9")),
                column(6, htmlOutput("map10"))
-             )    
+             ),
+             fluidRow(
+               #     
+               h3("Variable Description"),
+               DT::dataTableOutput("societaltable")            
+             )   
              
              
              #    plotOutput("plot")
