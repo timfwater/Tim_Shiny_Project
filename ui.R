@@ -11,15 +11,80 @@ navbarPage("Relationships Between Different Demigraphic Variables",
                     #fluid page
 
                       mainPanel(
-                        fluidRow(h4("Here is my test"))
-                        
-                        
-                      
+                        fluidRow(("This web application is designed to provide basic statistical comparisons across a wide range vital-statistic and socio-economic variables, as recorded within the past the past 28 years of Census data.")),
+                        fluidRow(),
+                        fluidRow(("Specifically, the user is able to determine both the strength, and magnitude, of the linear relationships between over 800 different variables of interest, across all 50 states.")),
+                        fluidRow(),                                    
+                        fluidRow(("Hypothetical, the application has the potential to generate over 36 million analyses.")),
+                        fluidRow(),                                   
+                        fluidRow(("Of note, although records go back until 1990, not every variable was recorded for every year. Therefore, before drawing any conclusions from this application's analysis, it is prudent to investigate the data provided within the Historic Correlation by State tab, so as to ensure that a sufficient body of cross-referenced data points exist.
+                                    
+                                    
+                                    
+                                    Directory of Tabs:
+
+                                    
+                                    Tab 1: Historic Correlation by State
+                                    
+                                    This tab provides the user with the greatest degree of evaluative control, and specific detail. 
+                                    
+                                    The user may specify any of the 50 states, while simultaneously selecting any pairing of the 854 variables that are available within the database.
+                                    
+                                    Upon specifying these selections, a scatterplot is rendered. Each data point represents the pairing of the specified varriables, for a specific year. This enables the user to see the relationship between variables over time, as well as identifying the number of years of cross-referenced data off of which the model was built.
+
+                                    
+                                    Tab 2: Variable Relationships Across States
+                                    
+                                    This tab allows the user to visualize both the strength, and magnitude of the statistical relationship between any pairing of the 854 variables, across all 50 states, over the past 28 years.
+                                    
+                                    Upon selecting the variables of interest, two maps of the United States are rendered. 
+                                    
+                                    The first map displays the Pearson's Correlation between the two selected variables, as it exists for each state. 
+                                    
+                                    This statistic is based off of the model's variance, and indicates the predictive accuracy of the model. Values range from -1 to 1, with values closer to -1 indicating a strong negative predictive strength of the model, and values closer to 1 indicating a strong positive predictive strength of the model.
+                                    
+                                    A gradient color scale indicates the relative value for each state
+                                    
+                                    The second map displays the regression coefficient between the variables, as it exists for each state. 
+                                    
+                                    This statistic Indicates the positive or negative change of the dependent Y variable, for a single-unit-increase in independent X variable.
+                                    
+                                    A gradient color scale indicates the relative value for each state
+
+                                    
+                                    Tab 3: Variable Relationships Across States: Health
+                                    
+                                    This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to health concerns.
+                                    
+                                    Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.
+
+                                    
+                                    Tab 4: Variable Relationships Across States: Economic
+                                    
+                                    This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to economic concerns.
+                                    
+                                    Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.
+
+                                    
+                                    Tab 5: Variable Relationships Across States: Societal
+                                    
+                                    This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to societal concerns.
+                                    
+                                    Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.
+                                    
+                                    
+                                    
+                                    All data was sourced from America's Health Rankings <https://www.americashealthrankings.org> which sources its information from multiple governmental and non-governmental sources.
+                                    
+                                    For additional details on the methodology of measuring of any of the varriables included, please visit the American Health Ranking's website for further details. 
+                                    
+                                    Here is my test")),
+                        fluidRow()
                     )
            ),
            
            
-tabPanel("Historic Correlation by State",
+tabPanel("Historic Variable Relationship by State",
     #fluid page
     sidebarLayout(
       sidebarPanel(
@@ -40,16 +105,13 @@ tabPanel("Historic Correlation by State",
         )
       ),
       mainPanel(
-
-      
-        
         plotOutput("plot")
       )
     )
 ),
 #TAB2
 
-  tabPanel("Variable Relatonships across States",
+  tabPanel("All Variable Relatonships across States",
 sidebarLayout(
   sidebarPanel(
     #fluidRow(something else)
@@ -69,26 +131,16 @@ sidebarLayout(
                                column(6, htmlOutput("map1")),
                                column(6, htmlOutput("map2"))
                              )    
-    
-    
-#    plotOutput("plot")
   )
 )
 ),
 
 
-# sidebarLayout(
-#   sidebarPanel(
-# 
-# 
-# )),
-#   mainPanel()
-
 
 #Tab 3
 
 
-tabPanel("Variable Relatonships across States: Health",
+tabPanel("Health Variable Relatonships across States",
          sidebarLayout(
            sidebarPanel(
              #fluidRow(something else)
@@ -109,29 +161,18 @@ tabPanel("Variable Relatonships across States: Health",
                column(6, htmlOutput("map6"))
              ),    
               fluidRow(
-             #   
                 h1("Variable Description"),
                 DT::dataTableOutput("healthtable")
               )  
-               
-               #tableOutput("Health_Variables")
-               
-               #h1("list of variables"),
-               #tags$img(scr="./health_variable_table.png", style="width:180px; height:150px; border:0px;")
-               
              )
-             
-             #    plotOutput("plot")
            )
-         
 ),
-
 
 
 #Tab 4
 
 
-tabPanel("Variable Relatonships across States: Economic",
+tabPanel("Economic Variable Relatonships across States",
          sidebarLayout(
            sidebarPanel(
              #fluidRow(something else)
@@ -156,26 +197,21 @@ tabPanel("Variable Relatonships across States: Economic",
                column(6, htmlOutput("map8"))
              ),
               fluidRow(
-           #     
                 h2("Variable Description" 
                 ),
                 DT::dataTableOutput("economictable")            
               )   
-           #   
-           #   #    plotOutput("plot")
             )
          )
 ),
 
 
-
 #Tab 5
 
 
-tabPanel("Variable Relatonships across States: Societal",
+tabPanel("Societal Variable Relatonships across States",
          sidebarLayout(
            sidebarPanel(
-             #fluidRow(something else)
              fluidRow(
                column(6, selectizeInput(inputId = "measure9",
                                         label = "Choose a measure",
@@ -196,9 +232,6 @@ tabPanel("Variable Relatonships across States: Societal",
                h3("Variable Description"),
                DT::dataTableOutput("societaltable")            
              )   
-             
-             
-             #    plotOutput("plot")
            )
          )
 )
