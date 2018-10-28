@@ -81,12 +81,12 @@ tabPanel("Variable Relatonships across States: Health",
              fluidRow(
                column(6, selectizeInput(inputId = "measure5",
                                         label = "Choose a measure",
-                                        choices = choices_measures,
-                                        selected = choices_measures[1])),
+                                        choices = health_choices_measures,
+                                        selected = health_choices_measures[1])),
                column(6, selectizeInput(inputId = "measure6",
                                         label="Choose a second measure",
-                                        choices = choices_measures,
-                                        selected = choices_measures[1]))
+                                        choices = health_choices_measures,
+                                        selected = health_choices_measures[1]))
              )
            ),
            mainPanel(
@@ -113,12 +113,12 @@ tabPanel("Variable Relatonships across States: Economy",
              fluidRow(
                column(6, selectizeInput(inputId = "measure7",
                                         label = "Choose a measure",
-                                        choices = choices_measures,
-                                        selected = choices_measures[1])),
+                                        choices = economic_choices_measures,
+                                        selected = economic_choices_measures[1])),
                column(6, selectizeInput(inputId = "measure8",
                                         label="Choose a second measure",
-                                        choices = choices_measures,
-                                        selected = choices_measures[1]))
+                                        choices = economic_choices_measures,
+                                        selected = economic_choices_measures[1]))
              )
            ),
            mainPanel(
@@ -145,12 +145,12 @@ tabPanel("Variable Relatonships across States: Societal",
              fluidRow(
                column(6, selectizeInput(inputId = "measure9",
                                         label = "Choose a measure",
-                                        choices = choices_measures,
-                                        selected = choices_measures[1])),
+                                        choices = societal_choices_measures,
+                                        selected = societal_choices_measures[1])),
                column(6, selectizeInput(inputId = "measure10",
                                         label="Choose a second measure",
-                                        choices = choices_measures,
-                                        selected = choices_measures[1]))
+                                        choices = societal_choices_measures,
+                                        selected = societal_choices_measures[1]))
              )
            ),
            mainPanel(

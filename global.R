@@ -13,11 +13,22 @@ library(ggplot2)
 ####### Loading data for first Two tabs #######
 
 AHRT <- readr::read_csv("AHRT.csv")
-mapdf4 <- readr::read_csv("Alabamatest.csv")
+#mapdf4 <- readr::read_csv("Alabamatest.csv")
+
+Health_Variables = readr::read_csv("Health_Variables.csv")
+Economic_Variables = readr::read_csv("Economic_Variables.csv")
+Societal_Variables = readr::read_csv("Societal_Variables.csv")
+
 
 choices_measures = unique(AHRT$MeasureName)
 
 states_measures = unique(AHRT$StateName)
+
+health_choices_measures = Health_Variables$Variable
+
+economic_choices_measures = Economic_Variables$Variable
+
+societal_choices_measures = Societal_Variables$Variable
 
 #Alabama Uninsured dataset
 #reactive function down until 29 -- currently static til buttons work
