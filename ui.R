@@ -5,7 +5,21 @@ library(markdown)
 
 
 navbarPage("Relationships Between Different Demigraphic Variables",
-  tabPanel("Historic Correlation by State",
+
+#Intro tab
+           tabPanel("An Overview of Application Offerings",
+                    #fluid page
+
+                      mainPanel(
+                        fluidRow(h4("Here is my test"))
+                        
+                        
+                      
+                    )
+           ),
+           
+           
+tabPanel("Historic Correlation by State",
     #fluid page
     sidebarLayout(
       sidebarPanel(
