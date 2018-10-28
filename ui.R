@@ -117,7 +117,7 @@ tabPanel("Variable Relatonships across States: Health",
 #Tab 4
 
 
-tabPanel("Variable Relatonships across States: Economy",
+tabPanel("Variable Relatonships across States: Economic",
          sidebarLayout(
            sidebarPanel(
              #fluidRow(something else)
@@ -133,13 +133,18 @@ tabPanel("Variable Relatonships across States: Economy",
              )
            ),
            mainPanel(
+             fluidRow(
+               column(6, ("Pearsons Correlation: by Input Variables, by State")),
+               column(6, ("Regression Coeffecient: by Input Variables, by State"))
+             ),
              fluidRow(  
                column(6, htmlOutput("map7")),
                column(6, htmlOutput("map8"))
              ),
               fluidRow(
            #     
-                h2("Variable Description"),
+                h2("Variable Description" 
+                ),
                 DT::dataTableOutput("economictable")            
               )   
            #   
@@ -169,12 +174,11 @@ tabPanel("Variable Relatonships across States: Societal",
              )
            ),
            mainPanel(
-             fluidRow(  
-               column(6, htmlOutput("map9")),
-               column(6, htmlOutput("map10"))
-             ),
+             fluidRow(("The Pearsons Correlation for Selected Variables, across all 50 States")),
+             fluidRow(htmlOutput("map9")),
+             fluidRow(("\n\nThe Regression Coeffecient for Selected Variables, across all 50 States")),
+             fluidRow(htmlOutput("map10")),
              fluidRow(
-               #     
                h3("Variable Description"),
                DT::dataTableOutput("societaltable")            
              )   
