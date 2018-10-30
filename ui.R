@@ -4,87 +4,86 @@ library(markdown)
 # shinyServer(function(input, output,session) {
 
 
-navbarPage("Relationships Between Different Demigraphic Variables",
+navbarPage("Simple Social Science Solver",
 
 #Intro tab
-           tabPanel("An Overview of Application Offerings",
-                    #fluid page
+           tabPanel("Application Offerings",
 
                       mainPanel(
-                        fluidRow(("This web application is designed to provide basic statistical comparisons across a wide range vital-statistic and socio-economic variables, as recorded within the past the past 28 years of Census data.")),
-                        fluidRow(),
-                        fluidRow(("Specifically, the user is able to determine both the strength, and magnitude, of the linear relationships between over 800 different variables of interest, across all 50 states.")),
-                        fluidRow(),                                    
+                        fluidRow(h1("Simple Social Science Solver: Synposis")),
+                        fluidRow(br()),
+                        fluidRow(("This web application is designed to provide basic statistical comparisons across a wide range US vital-statistic and socio-economic variables, by state of interest, from a database housing 28 years of records.")),
+                        fluidRow(br()),
+                        fluidRow(("Specifically, the user is able to determine both the strength, and magnitude, of the linear relationships between over 850 different variables of interest, across all 50 states.")),
+                        fluidRow(br()),                                    
                         fluidRow(("Hypothetical, the application has the potential to generate over 36 million analyses.")),
-                        fluidRow(),                                   
-                        fluidRow(("Of note, although records go back until 1990, not every variable was recorded for every year. Therefore, before drawing any conclusions from this application's analysis, it is prudent to investigate the data provided within the Historic Correlation by State tab, so as to ensure that a sufficient body of cross-referenced data points exist.
+                        fluidRow(br()),                                   
+                        fluidRow(("Of note, although records go back until 1990, not every variable was recorded for every year. Therefore, before drawing any conclusions from this application's analysis, it is prudent to investigate the data provided within the Historic 
+                                  Correlation by State tab, so as to ensure that a sufficient body of cross-referenced data points exist.")),
+                        fluidRow(br()),            
+                        fluidRow(h2("Directory of Tabs:")),
+                        fluidRow(br()),                                    
+                        fluidRow((br("Tab 1: Comprehensive Correlation by State"))),
                                     
+                        fluidRow(br("This tab provides the user with the greatest degree of evaluative control, and specific detail.")),
                                     
+                        fluidRow(br("The user may specify any of the 50 states, while simultaneously selecting any pairing of the 854 variables that are available within the database.")),
                                     
-                                    Directory of Tabs:
+                        fluidRow(br("Upon specifying these selections, a scatterplot is rendered. Each data point represents the pairing of the specified varriables, for a specific year. This enables
+                                    the user to see the relationship between variables over time, as well as identifying the number of years of cross-referenced data off of which the model was built.")),
 
+                        fluidRow(br()),                                    
+                        fluidRow((br("Tab 2: Variable Correlations Across States: All Inclusive"))),
                                     
-                                    Tab 1: Historic Correlation by State
+                        fluidRow(br("This tab allows the user to visualize both the strength, and magnitude of the statistical relationship between any pairing of the 854 variables, across all 50 states, over the past 28 years.")),
                                     
-                                    This tab provides the user with the greatest degree of evaluative control, and specific detail. 
+                        fluidRow(br("Upon selecting the variables of interest, two maps of the United States are rendered.")), 
                                     
-                                    The user may specify any of the 50 states, while simultaneously selecting any pairing of the 854 variables that are available within the database.
+                        fluidRow(br("The first map displays the Pearson's Correlation between the two selected variables, as it exists for each state.")), 
                                     
-                                    Upon specifying these selections, a scatterplot is rendered. Each data point represents the pairing of the specified varriables, for a specific year. This enables the user to see the relationship between variables over time, as well as identifying the number of years of cross-referenced data off of which the model was built.
+                        fluidRow(br("This statistic is based off of the model's variance, and indicates the predictive accuracy of the model. Values range from -1 to 1, with values closer to -1 indicating a strong negative predictive strength of the model, and values closer to 1 indicating a strong positive predictive strength of the model.
+                                    
+                                    A gradient color scale indicates the relative value for each state")),
+                                    
+                        fluidRow(br("The second map displays the regression coefficient between the variables, as it exists for each state.")), 
+                                    
+                        fluidRow(br("This statistic Indicates the positive or negative change of the dependent Y variable, for a single-unit-increase in independent X variable.
+                                    
+                                    A gradient color scale indicates the relative value for each state.")),
 
+                        fluidRow(br()),                                    
+                        fluidRow((br("Tab 3: Variable Correlation Across States: Health"))),
                                     
-                                    Tab 2: Variable Relationships Across States
+                        fluidRow(br("This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to health concerns.")),
                                     
-                                    This tab allows the user to visualize both the strength, and magnitude of the statistical relationship between any pairing of the 854 variables, across all 50 states, over the past 28 years.
-                                    
-                                    Upon selecting the variables of interest, two maps of the United States are rendered. 
-                                    
-                                    The first map displays the Pearson's Correlation between the two selected variables, as it exists for each state. 
-                                    
-                                    This statistic is based off of the model's variance, and indicates the predictive accuracy of the model. Values range from -1 to 1, with values closer to -1 indicating a strong negative predictive strength of the model, and values closer to 1 indicating a strong positive predictive strength of the model.
-                                    
-                                    A gradient color scale indicates the relative value for each state
-                                    
-                                    The second map displays the regression coefficient between the variables, as it exists for each state. 
-                                    
-                                    This statistic Indicates the positive or negative change of the dependent Y variable, for a single-unit-increase in independent X variable.
-                                    
-                                    A gradient color scale indicates the relative value for each state
+                        fluidRow(br("Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.")),
 
+                        fluidRow(br()),                                    
+                        fluidRow((br("Tab 4: Variable Correlation Across States: Economic"))),
                                     
-                                    Tab 3: Variable Relationships Across States: Health
+                        fluidRow(br("This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to economic concerns.")),
                                     
-                                    This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to health concerns.
-                                    
-                                    Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.
+                        fluidRow(br("Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.")),
 
+                        fluidRow(br()),                                   
+                        fluidRow((br("Tab 5: Variable Correlation Across States: Societal"))),
                                     
-                                    Tab 4: Variable Relationships Across States: Economic
+                        fluidRow(br("This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to societal concerns.")),
                                     
-                                    This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to economic concerns.
+                        fluidRow(br("Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.")),
                                     
-                                    Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.
-
+                        fluidRow(br()),                                    
+                        fluidRow(br()),
+                        fluidRow(br("Additional Information:")),
+                        fluidRow(br("All data was sourced from America's Health Rankings (https://www.americashealthrankings.org) which provides information sourced from multiple governmental and non-governmental sources.")),
                                     
-                                    Tab 5: Variable Relationships Across States: Societal
-                                    
-                                    This tab provides the same functionality as Tab 2, but limits the selection of available variables to those closely related to societal concerns.
-                                    
-                                    Additionally, a brief description is provided for each available variable, in order to provide a better degree of context to what each measure specifically infers.
-                                    
-                                    
-                                    
-                                    All data was sourced from America's Health Rankings <https://www.americashealthrankings.org> which sources its information from multiple governmental and non-governmental sources.
-                                    
-                                    For additional details on the methodology of measuring of any of the varriables included, please visit the American Health Ranking's website for further details. 
-                                    
-                                    Here is my test")),
+                        fluidRow(br("For additional details on the methodology of measuring of any of the varriables included, please visit the American Health Ranking's website for further details.")),
                         fluidRow()
                     )
            ),
            
-           
-tabPanel("Historic Variable Relationship by State",
+#Tab 2           
+tabPanel("Comprehensive Correlation by State",
     #fluid page
     sidebarLayout(
       sidebarPanel(
@@ -106,12 +105,19 @@ tabPanel("Historic Variable Relationship by State",
       ),
       mainPanel(
         plotOutput("plot")
+        
+        
+        # fluidRow(
+        #   h3("Variable Description"),
+        #   DT::dataTableOutput("healthtable")
+        # )  
+        
       )
     )
 ),
-#TAB2
+#TAB3
 
-  tabPanel("All Variable Relatonships across States",
+  tabPanel("Variable Correlation Across States: All Inclusive",
 sidebarLayout(
   sidebarPanel(
     #fluidRow(something else)
@@ -137,10 +143,10 @@ sidebarLayout(
 
 
 
-#Tab 3
+#Tab 4
 
 
-tabPanel("Health Variable Relatonships across States",
+tabPanel("Variable Correlation Across States: Health",
          sidebarLayout(
            sidebarPanel(
              #fluidRow(something else)
@@ -161,7 +167,7 @@ tabPanel("Health Variable Relatonships across States",
                column(6, htmlOutput("map6"))
              ),    
               fluidRow(
-                h1("Variable Description"),
+                h3("Variable Description"),
                 DT::dataTableOutput("healthtable")
               )  
              )
@@ -169,10 +175,10 @@ tabPanel("Health Variable Relatonships across States",
 ),
 
 
-#Tab 4
+#Tab 5
 
 
-tabPanel("Economic Variable Relatonships across States",
+tabPanel("Variable Correlation Across States: Economic",
          sidebarLayout(
            sidebarPanel(
              #fluidRow(something else)
@@ -197,7 +203,7 @@ tabPanel("Economic Variable Relatonships across States",
                column(6, htmlOutput("map8"))
              ),
               fluidRow(
-                h2("Variable Description" 
+                h4("Variable Description" 
                 ),
                 DT::dataTableOutput("economictable")            
               )   
@@ -206,30 +212,36 @@ tabPanel("Economic Variable Relatonships across States",
 ),
 
 
-#Tab 5
+#Tab 6
 
 
-tabPanel("Societal Variable Relatonships across States",
+tabPanel("Variable Correlation Across States: Societal",
          sidebarLayout(
            sidebarPanel(
+             #fluidRow(something else)
              fluidRow(
                column(6, selectizeInput(inputId = "measure9",
                                         label = "Choose a measure",
-                                        choices = societal_choices_measures,
-                                        selected = societal_choices_measures[1])),
+                                        choices = economic_choices_measures,
+                                        selected = economic_choices_measures[1])),
                column(6, selectizeInput(inputId = "measure10",
                                         label="Choose a second measure",
-                                        choices = societal_choices_measures,
-                                        selected = societal_choices_measures[1]))
+                                        choices = economic_choices_measures,
+                                        selected = economic_choices_measures[1]))
              )
            ),
            mainPanel(
-             fluidRow(("The Pearsons Correlation for Selected Variables, across all 50 States")),
-             fluidRow(htmlOutput("map9")),
-             fluidRow(("\n\nThe Regression Coeffecient for Selected Variables, across all 50 States")),
-             fluidRow(htmlOutput("map10")),
              fluidRow(
-               h3("Variable Description"),
+               column(6, ("Pearsons Correlation: by Input Variables, by State")),
+               column(6, ("Regression Coeffecient: by Input Variables, by State"))
+             ),
+             fluidRow(  
+               column(6, htmlOutput("map9")),
+               column(6, htmlOutput("map10"))
+             ),
+             fluidRow(
+               h5("Variable Description" 
+               ),
                DT::dataTableOutput("societaltable")            
              )   
            )
@@ -240,86 +252,3 @@ tabPanel("Societal Variable Relatonships across States",
 
 
 
-
-
-
-
-
-
-
- # tabPane1("Historic Correlation by State")
-
-
-  #          sidebarLayout(
-  #            sidebarPanel(
-#                         fluidRow(
-#                           column(6, selectizeInput(inputId = "measure1",
-#                                                    label = "Choose a measure",
-#                                                    choices = choices_measures,
-#                                                    selected = choices_measures[1])),
-#                           column(6, selectizeInput(inputId = "measure2",
-#                                                    label="Choose a second measure",
-#                                                    choices = choices_measures,
-#                                                    selected = choices_measures[1]))
-#                         )    
-#     
-#     
-#   )))  
-# ))
-  # tabPanel("Summary",
-  #   verbatimTextOutput("summary")
-  # ))
-  # navbarMenu("More",
-  #   tabPanel("Table",
-  #     DT::dataTableOutput("table")
-  #   )))
-
-#TAB 2    
-        
-# navbarPage("Tab 2 but really Tab 1")
-#            tabPanel("Historic Correlation by State",
-#                     #fluid page
-#                     sidebarLayout(
-#                       sidebarPanel(
-#                         #fluidRow(something else)
-#                         fluidRow(
-#                           column(6, selectizeInput(inputId = "measure1",
-#                                                    label = "Choose a measure",
-#                                                    choices = choices_measures,
-#                                                    selected = choices_measures[1])),
-#                           column(6, selectizeInput(inputId = "measure2",
-#                                                    label="Choose a second measure",
-#                                                    choices = choices_measures,
-#                                                    selected = choices_measures[1]))
-#                         )
-#                       ),
-#                       mainPanel(
-#                         fluidRow(  
-#                           column(6, htmlOutput("map1")),
-#                           column(6, htmlOutput("map2"))
-#                         ),
-#
-#                       )
-#                     )
-#            )  
-#     
-    # tabPanel("About",
-    #   fluidRow(
-    #     column(6,
-    #       #includeMarkdown("about.md")
-    #     ),
-    #     column(3,
-    #       img(class="img-polaroid",
-    #         src=paste0("http://upload.wikimedia.org/",
-    #         "wikipedia/commons/9/92/",
-    #         "1919_Ford_Model_T_Highboy_Coupe.jpg")),
-    #       tags$small(
-    #         "Source: Photographed at the Bay State Antique ",
-    #         "Automobile Club's July 10, 2005 show at the ",
-    #         "Endicott Estate in Dedham, MA by ",
-    #         a(href="http://commons.wikimedia.org/wiki/User:Sfoskett",
-    #           "User:Sfoskett")
-    #       )
-    #     )
-    #   )
-    # )

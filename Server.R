@@ -2,7 +2,7 @@
 function(input, output, session) {
 
   
-#TAB1
+#TAB2
   
 filt_data <- reactive({
   M1 = AHRT %>%
@@ -23,19 +23,17 @@ filt_data <- reactive({
 	M1M2_G = ggplot(data=filt_data(), aes(x = Value.x, y = Value.y)) 
 	M1M2_G + geom_point() + geom_smooth(method = "lm") #AL_UN_LHS_GSC = 
 #	AL_UN_LHS_GLM = AL_UN_LHS_G + geom_point() + geom_smooth(method = "lm")
+    })	
 
-  })
-#line 4 -- replace w ggplot/correlation lines 
-  # output$summary <- renderPrint({
-  #   summary(AHR_AL)
-  # })
-  # 
-  # output$table <- DT::renderDataTable({
-  #   DT::datatable(AHR_AL)
-  # })
+# output$qq = qq  	
+# 	M1M2_cor = cor(M1M2$Value.x, M1M2$Value.y,  method = "pearson", use = "complete.obs")
+# 	M1M2_lm = lm(M1M2$Value.x ~ M1M2$Value.y)
+# 	M1M2_coef = M1M2_lm$coefficients[["M1M2$Value.y"]]
+# 	qq = c(M1M2_cor, M1M2_coef)
+#   })
 
 
-#TAB2
+#TAB 3
 
 filt_data2 <- reactive({
   
@@ -90,7 +88,7 @@ filt_data2 <- reactive({
                   sizeAxis.minValue = -1.0,
                   displayMode="regions", 
                   resolution="provinces",
-                  width=440, height=400))     
+                  width=430, height=400))     
    })
 
 #map 2 of Beta coefficient
@@ -104,10 +102,10 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=440, height=400))     
+                               width=430, height=400))     
    })   
 
-#Tab 3
+#Tab 4
    
    filt_data3 <- reactive({
      
@@ -162,7 +160,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=440, height=400))     
+                               width=430, height=400))     
    })
    
    #map 2 of Beta coefficient
@@ -176,7 +174,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=440, height=400))     
+                               width=430, height=400))     
    })   
    
     output$healthtable = DT::renderDataTable({
@@ -184,7 +182,7 @@ filt_data2 <- reactive({
     })
    
     
-   #Tab 4
+   #Tab 5
    
    filt_data4 <- reactive({
      
@@ -239,7 +237,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=440, height=400))     
+                               width=430, height=400))     
    })
    
    #map 2 of Beta coefficient
@@ -253,14 +251,14 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=440, height=400))     
+                               width=430, height=400))     
    })   
    
     output$economictable = DT::renderDataTable({
       Economic_Variables
     })   
 
-   #Tab 5
+   #Tab 6
    
    filt_data5 <- reactive({
      
@@ -315,7 +313,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=800, height=400))     
+                               width=430, height=400))     
    })
    
    #map 2 of Beta coefficient
@@ -329,7 +327,7 @@ filt_data2 <- reactive({
                                sizeAxis.minValue = -1.0,
                                displayMode="regions", 
                                resolution="provinces",
-                               width=800, height=400))     
+                               width=430, height=400))     
    })     
    
 
