@@ -25,7 +25,25 @@ filt_data <- reactive({
 #	AL_UN_LHS_GLM = AL_UN_LHS_G + geom_point() + geom_smooth(method = "lm")
     })	
 
-# output$qq = qq  	
+  output$statstable = DT::renderDataTable({
+    
+    M1M2_cor = cor(M1M2$Value.x, M1M2$Value.y,  method = "pearson", use = "complete.obs")
+    M1M2_lm = lm(M1M2$Value.x ~ M1M2$Value.y)
+    
+    beta = summary(M1M2_lm)$coefficients[2,1]
+    stde = summary(M1M2_lm)$coefficients[2,2]
+    corre = M1M2_cor
+    
+    Statistic_Value = c(beta, stde, corre)
+    Statistic_Name = c("Regression Coeffecient", 
+                       "Standard Deviation of the Regression Coeffecient", "Correlation Coeffecient")
+    
+    ccc = cbind(Statistic_Name, Statistic_Value)
+    ddd = as.data.frame(ccc)
+    return(ddd)
+  })    
+    
+    # output$qq = qq  	
 # 	M1M2_cor = cor(M1M2$Value.x, M1M2$Value.y,  method = "pearson", use = "complete.obs")
 # 	M1M2_lm = lm(M1M2$Value.x ~ M1M2$Value.y)
 # 	M1M2_coef = M1M2_lm$coefficients[["M1M2$Value.y"]]

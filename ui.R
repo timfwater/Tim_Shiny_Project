@@ -4,13 +4,13 @@ library(markdown)
 # shinyServer(function(input, output,session) {
 
 
-navbarPage("Simple Social Science Solver",
+navbarPage("Simple Social Science Slueth Solution",
 
 #Intro tab
            tabPanel("Application Offerings",
 
                       mainPanel(
-                        fluidRow(h1("Simple Social Science Solver: Synposis")),
+                        fluidRow(h1("Simple Social Science Slueth Solution: Succinct Synposis")),
                         fluidRow(br()),
                         fluidRow(("This web application is designed to provide basic statistical comparisons across a wide range US vital-statistic and socio-economic variables, by state of interest, from a database housing 28 years of records.")),
                         fluidRow(br()),
@@ -104,13 +104,13 @@ tabPanel("Comprehensive Correlation by State",
         )
       ),
       mainPanel(
-        plotOutput("plot")
+        plotOutput("plot"),
         
         
-        # fluidRow(
-        #   h3("Variable Description"),
-        #   DT::dataTableOutput("healthtable")
-        # )  
+         fluidRow(
+           h3("Statistical Breakdown"),
+           DT::dataTableOutput("statstable")
+         )  
         
       )
     )
