@@ -7,7 +7,7 @@ library(markdown)
 navbarPage("Simple Social Science Slueth Solution",
 
 #Intro tab
-           tabPanel("Application Offerings",
+           tabPanel("Succinct Synopsis",
 
                       mainPanel(
                         fluidRow(h1("Simple Social Science Slueth Solution: Succinct Synposis")),
