@@ -26,13 +26,25 @@ filt_data <- reactive({
     })	
 
   output$statstable = DT::renderDataTable({
+ 
+    M11 = AHRT %>%
+      filter(., StateName == input$state) %>%
+      filter(., MeasureName == input$measure1) %>%
+      filter(., !is.na(Value))
+    #state data set 1
+    M12 = AHRT %>%
+      filter(., StateName == input$state) %>%
+      filter(., MeasureName == input$measure2) %>%
+      filter(., !is.na(Value))
+    #state data set 2
+    M11M12 = inner_join(M11, M12, by = c("Edition","Edition"))
+       
+    M11M12_cor = cor(M11M12$Value.x, M11M12$Value.y,  method = "pearson", use = "complete.obs")
+    M11M12_lm = lm(M11M12$Value.x ~ M11M12$Value.y)
     
-    M1M2_cor = cor(M1M2$Value.x, M1M2$Value.y,  method = "pearson", use = "complete.obs")
-    M1M2_lm = lm(M1M2$Value.x ~ M1M2$Value.y)
-    
-    beta = summary(M1M2_lm)$coefficients[2,1]
-    stde = summary(M1M2_lm)$coefficients[2,2]
-    corre = M1M2_cor
+    beta = summary(M11M12_lm)$coefficients[2,1]
+    stde = summary(M11M12_lm)$coefficients[2,2]
+    corre = M11M12_cor
     
     Statistic_Value = c(beta, stde, corre)
     Statistic_Name = c("Regression Coeffecient", 
